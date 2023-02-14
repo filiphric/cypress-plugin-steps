@@ -2,7 +2,7 @@
   "author": "Filip Hric (https://filiphric.com/)",
   "license": "ISC",
   "name": "cypress-plugin-steps",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "Add steps to your tests",
   "main": "dist/index.js",
   "types": "dist/types.d.ts",
