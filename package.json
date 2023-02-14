@@ -59,10 +59,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/filiphric/cypress-plugin-steps.git"
+    "url": "https://github.com/filiphric/cypress-steps.git"
   },
   "bugs": {
-    "url": "https://github.com/filiphric/cypress-plugin-steps/issues"
+    "url": "https://github.com/filiphric/cypress-steps/issues"
   },
-  "homepage": "https://github.com/filiphric/cypress-plugin-steps#readme"
+  "homepage": "https://github.com/filiphric/cypress-steps#readme"
 }
