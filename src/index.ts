@@ -7,3 +7,5 @@ Cypress.Commands.addAll({
   step,
   section,
 })
+
+export { section, step }
