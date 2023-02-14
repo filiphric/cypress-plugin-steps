@@ -72,13 +72,6 @@ You can find and replace all your `cy.log()` commands by matching the word `log`
 ```
 (?:cy\s*)?log\s*
 ```
-Or alternatively, you can overwrite your existing `cy.log()` command:
-
-```js
-import { step } from 'cypress-plugin-steps'
-Cypress.Commands.overwrite('log', step)
-```
-
 
 <hr>
 <p align="center">
