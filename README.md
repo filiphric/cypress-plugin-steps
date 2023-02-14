@@ -18,16 +18,16 @@ A small Cypress helper that adds your test steps to the timeline and error logs.
 
 Install this package:
 ```bash
-npm i cypress-steps
+npm i cypress-plugin-steps
 # or
-yarn add cypress-steps
+yarn add cypress-plugin-steps
 ```
 
 Import the plugin into your `cypress/support/e2e.js` file:
 ```js
-import 'cypress-steps'
+import 'cypress-plugin-steps'
 // or
-require('cypress-steps')
+require('cypress-plugin-steps')
 ```
 
 ### Usage
@@ -75,7 +75,7 @@ You can find and replace all your `cy.log()` commands by matching the word `log`
 Or alternatively, you can overwrite your existing `cy.log()` command:
 
 ```js
-import { step } from 'cypress-steps'
+import { step } from 'cypress-plugin-steps'
 Cypress.Commands.overwrite('log', step)
 ```
 

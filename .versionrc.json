@@ -9,7 +9,7 @@
     {"type": "perf", "hidden": true},
     {"type": "test", "hidden": true}
   ],
-  "commitUrlFormat": "https://github.com/filiphric/cypress-steps/commits/{{hash}}",
-  "compareUrlFormat": "https://github.com/filiphric/cypress-steps/compare/{{previousTag}}...{{currentTag}}"
+  "commitUrlFormat": "https://github.com/filiphric/cypress-plugin-steps/commits/{{hash}}",
+  "compareUrlFormat": "https://github.com/filiphric/cypress-plugin-steps/compare/{{previousTag}}...{{currentTag}}"
 }
 
