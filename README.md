@@ -29,6 +29,14 @@ import 'cypress-plugin-steps'
 // or
 require('cypress-plugin-steps')
 ```
+#### TypeScript support
+In most cases, types work just by installing plugin, but you can add the types to your `tsconfig.json`
+```json
+{
+  "types": ["cypress-plugin-steps"]
+}
+```
+This will add types for `cy.step()` and `cy.section()` command.
 
 ### Usage
 This will add two new commands to your Cypress library: `cy.step()` and `cy.section()` See the details below
