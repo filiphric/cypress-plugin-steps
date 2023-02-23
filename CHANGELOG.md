@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/filiphric/cypress-plugin-steps/compare/v1.0.3...v1.0.4) (2023-02-23)
+
+
+### Bug Fixes
+
+* omit steps message when no steps were done ([da9eafb](https://github.com/filiphric/cypress-plugin-steps/commits/da9eafbde582693f776920e865deb4efdd3a1b28))
+
 ## [0.0.0](https://github.com/filiphric/cypress-plugin-steps/compare/v1.0.0...v0.0.0) (2023-02-14)
 
 
