@@ -29,7 +29,7 @@ import 'cypress-plugin-steps'
 // or
 require('cypress-plugin-steps')
 ```
-#### TypeScript support
+### TypeScript support
 In most cases, types work just by installing plugin, but you can add the types to your `tsconfig.json`
 ```json
 {
