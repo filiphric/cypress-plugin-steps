@@ -33,7 +33,7 @@ require('cypress-plugin-steps')
 In most cases, types work just by installing plugin, but you can add the types to your `tsconfig.json`
 ```json
 {
-  "types": ["cypress-plugin-stepsi"]
+  "types": ["cypress-plugin-steps"]
 }
 ```
 This will add types for `cy.step()` and `cy.section()` command.
