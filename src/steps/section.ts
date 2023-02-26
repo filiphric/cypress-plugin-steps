@@ -6,8 +6,7 @@ export const section = (message: string) => {
   logMessage = `\n--- ${message} ---\n`;
 
   Cypress.log({
-    displayName: logMessage.toUpperCase(),
-    message: '\n',
+    message: logMessage.toUpperCase(),
   });
 
   window.testFlow.push(logMessage);

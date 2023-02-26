@@ -24,6 +24,16 @@ export const addStyles = () => {
     background-color: #007780;
   }
 
+  .command.command-name-step .command-method,
+  .command.command-name-section .command-method
+   {
+    display: none;
+  }
+
+  .command.command-name-step .command-message-text,
+  .command.command-name-section .command-message-text {
+    color: #d0d2e0
+  }
   `;
 
 }
