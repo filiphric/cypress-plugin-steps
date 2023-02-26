@@ -3,8 +3,7 @@ export const step = (message: string) => {
   const logMessage = `${window.logCalls}. ${message}`;
 
   Cypress.log({
-    displayName: logMessage.toUpperCase(),
-    message: '\n',
+    message: logMessage.toUpperCase(),
   });
 
   window.testFlow.push(logMessage);

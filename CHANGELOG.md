@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/filiphric/cypress-plugin-steps/compare/v1.0.4...v1.1.0) (2023-02-26)
+
+
+### Features
+
+* support for cypress-terminal-report plugin ([26bcafb](https://github.com/filiphric/cypress-plugin-steps/commits/26bcafb41e459e98befcdac0fe5e93b63b6acc07))
+
 ### [1.0.4](https://github.com/filiphric/cypress-plugin-steps/compare/v1.0.3...v1.0.4) (2023-02-23)
 
 
