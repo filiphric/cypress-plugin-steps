@@ -1,10 +1,12 @@
 import { addStyles } from "./addStyles";
 
-beforeEach(function () {
+Cypress.on('test:before:run', () => {
+
   addStyles()
   window.logCalls = 1;
   window.testFlow = [];
-});
+
+})
 
 Cypress.on('fail', (err) => {
   console.log(err)
