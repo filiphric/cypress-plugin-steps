@@ -10,7 +10,7 @@ Cypress.on('test:before:run', () => {
 
 Cypress.on('fail', (err) => {
   console.log(err)
-  if (window.testFlow.length) {
+  if (window.testFlow && window.testFlow.length) {
     err.message += `${'\n\n' + 'Test steps were:\n\n'}${window.testFlow.join('\n')}`;
   }
   throw err;
