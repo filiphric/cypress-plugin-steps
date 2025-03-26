@@ -19,6 +19,8 @@ it('numbers test steps', () => {
   cy.step('select indigo')
   cy.get('.indigo')
 
+  cy.todo('Finish the test')
+
 
   const findStepCommand = () => {
     return Cypress.$("#unified-reporter", top?.document).find('.command-name-step')
