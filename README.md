@@ -8,11 +8,15 @@ A small Cypress helper that adds your test steps to the timeline and error logs.
 </p>
 
 ### Table of contents
+- [Table of contents](#table-of-contents)
 - [Installation](#installation)
+- [TypeScript support](#typescript-support)
 - [Usage](#usage)
 - [cy.step()](#cystep)
+- [cy.todo()](#cytodo)
+- [Error messages](#error-messages)
 - [cy.section()](#cysection)
-- [TIP: rename all your cy.log() to cy.step() commands](#tip-rename-all-your-cylog-to-cystep-commands)
+- [TIP: rename all your `cy.log()` to `cy.step()` commands](#tip-rename-all-your-cylog-to-cystep-commands)
 
 ### Installation
 
@@ -36,7 +40,7 @@ In most cases, types work just by installing plugin, but you can add the types t
   "types": ["cypress-plugin-steps"]
 }
 ```
-This will add types for `cy.step()` and `cy.section()` command.
+This will add types for `cy.step()`, `cy.section()`, and `cy.todo()` command.
 
 ### Usage
 This will add two new commands to your Cypress library: `cy.step()` and `cy.section()` See the details below
@@ -61,6 +65,14 @@ it('numbers test steps', () => {
 
 ![screenshot.png](images/screenshot.png)
 
+### cy.todo()
+
+This command is meant to note a part of the test missing implementation.
+
+```js
+cy.todo('Use better test selectors')
+```
+
 ### Error messages
 If your test fails, your scenario will be added to the error message. This way your scenario will be visible right on the error screenshot that Cypress does automatically:
 
@@ -70,7 +82,7 @@ You can also see the scenario in terminal:
 ![error in terminal](images/terminal.png)
 
 ### cy.section()
-Works similarly to `cy.step()` but will be more prominent in Cypress runner (adding '---' to the log message) and will reset counter. This way you can divide your test into multiple secions. 
+Works similarly to `cy.step()` but will be more prominent in Cypress runner (adding '---' to the log message) and will reset counter. This way you can divide your test into multiple secions.
 
 ![sections](images/sections.png)
 

@@ -4,7 +4,7 @@ declare global {
     interface Chainable {
       /**
        * Adds a step log to your test flow.
-       * @param message 
+       * @param message
        * @example
        * cy.step('open home page')
        */
@@ -12,11 +12,19 @@ declare global {
 
       /**
        * Adds a new section to your test flow.
-       * @param message 
+       * @param message
        * @example
        * cy.section('dashboard section')
        */
       section(message: string): Chainable<null>;
+
+      /**
+       * Adds a warning step to your test flow.
+       * @param message
+       * @example
+       * cy.todo('finish the user setup')
+       */
+      todo(message: string): Chainable<null>;
     }
   }
   interface Window {
