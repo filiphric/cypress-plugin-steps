@@ -30,6 +30,10 @@ it('numbers test steps', () => {
     return Cypress.$("#unified-reporter", top?.document).find('.command-name-section')
   }
 
+  const findTodoCommand = () => {
+    return Cypress.$("#unified-reporter", top?.document).find('.command-name-todo')
+  }
+
   cy.window()
     .then(findStepCommand)
     .should('have.length', 7)
@@ -48,6 +52,13 @@ it('numbers test steps', () => {
         .should('have.css', 'background-color', 'rgb(0, 89, 93)')
     })
 
-
+  cy.window()
+    .then(findTodoCommand)
+    .should('have.length', 1)
+    .spread(items => {
+      cy.wrap(items)
+        .find('.command-wrapper')
+        .should('have.css', 'background-color', 'rgb(238, 130, 238)')
+    })
 
 });
