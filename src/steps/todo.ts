@@ -1,5 +1,4 @@
-export const todo = (message: string) => {
-
+export const todo = (message: string, todoFunction?: () => void) => {
   const logMessage = `${window.logCalls}. ${message}`;
 
   Cypress.log({
@@ -9,5 +8,5 @@ export const todo = (message: string) => {
   window.testFlow.push(logMessage);
   window.logCalls++;
 
-}
-
+  todoFunction?.();
+};

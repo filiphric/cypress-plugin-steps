@@ -1,5 +1,4 @@
-export const step = (message: string) => {
-
+export const step = (message: string, stepFunction?: () => void) => {
   const logMessage = `${window.logCalls}. ${message}`;
 
   Cypress.log({
@@ -9,5 +8,5 @@ export const step = (message: string) => {
   window.testFlow.push(logMessage);
   window.logCalls++;
 
-}
-
+  stepFunction?.();
+};

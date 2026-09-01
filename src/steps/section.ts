@@ -1,5 +1,4 @@
-export const section = (message: string) => {
-
+export const section = (message: string, sectionFunction?: () => void) => {
   let logMessage = `${window.logCalls}. ${message}`;
 
   window.logCalls = 0;
@@ -12,4 +11,5 @@ export const section = (message: string) => {
   window.testFlow.push(logMessage);
   window.logCalls++;
 
-}
+  sectionFunction?.();
+};

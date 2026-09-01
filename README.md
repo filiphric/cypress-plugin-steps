@@ -8,6 +8,7 @@ A small Cypress helper that adds your test steps to the timeline and error logs.
 </p>
 
 ### Table of contents
+
 - [Table of contents](#table-of-contents)
 - [Installation](#installation)
 - [TypeScript support](#typescript-support)
@@ -21,6 +22,7 @@ A small Cypress helper that adds your test steps to the timeline and error logs.
 ### Installation
 
 Install this package:
+
 ```bash
 npm i cypress-plugin-steps
 # or
@@ -28,38 +30,45 @@ yarn add cypress-plugin-steps
 ```
 
 Import the plugin into your `cypress/support/e2e.js` file:
+
 ```js
-import 'cypress-plugin-steps'
+import 'cypress-plugin-steps';
 // or
-require('cypress-plugin-steps')
+require('cypress-plugin-steps');
 ```
+
 ### TypeScript support
+
 In most cases, types work just by installing plugin, but you can add the types to your `tsconfig.json`
+
 ```json
 {
   "types": ["cypress-plugin-steps"]
 }
 ```
+
 This will add types for `cy.step()`, `cy.section()`, and `cy.todo()` command.
 
 ### Usage
+
 This will add two new commands to your Cypress library: `cy.step()` and `cy.section()` See the details below
 
 ### cy.step()
-This works similarly to `cy.log()` command, but in addition, will add numbering to your tests:
+
+This works similarly to `cy.log()` command, but in addition, will add numbering to your tests.
+Optionally you can add a function as second parameter, similar as `describe() `and `it()`, in order to group the code that is part of the step or section.
 
 ```ts
 it('numbers test steps', () => {
+  cy.step('open a page');
+  cy.visit('cypress/index.html');
 
-  cy.step('open a page')
-  cy.visit('cypress/index.html')
+  cy.step('find all primary colors');
+  cy.get('.primary');
 
-  cy.step('find all primary colors')
-  cy.get('.primary')
-
-  cy.step('select blue')
-  cy.get('.blue')
-
+  cy.step('select blue', () => {
+    cy.get('.blue');
+  });
 });
 ```
 
@@ -70,10 +79,11 @@ it('numbers test steps', () => {
 This command is meant to note a part of the test missing implementation.
 
 ```js
-cy.todo('Use better test selectors')
+cy.todo('Use better test selectors');
 ```
 
 ### Error messages
+
 If your test fails, your scenario will be added to the error message. This way your scenario will be visible right on the error screenshot that Cypress does automatically:
 
 ![error scenario](images/error.png)
@@ -82,6 +92,7 @@ You can also see the scenario in terminal:
 ![error in terminal](images/terminal.png)
 
 ### cy.section()
+
 Works similarly to `cy.step()` but will be more prominent in Cypress runner (adding '---' to the log message) and will reset counter. This way you can divide your test into multiple secions.
 
 ![sections](images/sections.png)
@@ -89,6 +100,7 @@ Works similarly to `cy.step()` but will be more prominent in Cypress runner (add
 ### TIP: rename all your `cy.log()` to `cy.step()` commands
 
 You can find and replace all your `cy.log()` commands by matching the word `log` with following regex:
+
 ```
 (?:cy\s*)?log\s*
 ```
