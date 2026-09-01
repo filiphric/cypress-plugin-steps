@@ -9,12 +9,10 @@
       "node",
       "cypress"
     ],
-    "typeRoots": [
-      "../dist"
-    ],
     "baseUrl": "./"
   },
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    "../dist/types.d.ts"
   ]
 }

@@ -1,64 +1,73 @@
 it('numbers test steps', () => {
+  cy.step('open a page');
+  cy.visit('cypress/index.html');
 
-  cy.step('open a page')
-  cy.visit('cypress/index.html')
+  cy.section('find all primary colors', () => {
+    cy.step('check red color', () => {
+      cy.get('.red');
+    });
 
-  cy.section('find all primary colors')
-  cy.step('check red color')
-  cy.get('.red')
-  cy.step('check green color')
-  cy.get('.green')
-  cy.step('check blue color')
-  cy.get('.blue')
+    cy.step('check green color', () => {
+      cy.get('.green');
+    });
 
-  cy.section('find all secondary colors')
-  cy.step('select orange')
-  cy.get('.orange')
-  cy.step('select yellow')
-  cy.get('.yellow')
-  cy.step('select indigo')
-  cy.get('.indigo')
+    cy.step('check blue color', () => {
+      cy.get('.blue');
+    });
+  });
 
-  cy.todo('Finish the test')
+  cy.section('find all secondary colors');
+  cy.step('select orange');
+  cy.get('.orange');
+  cy.step('select yellow');
+  cy.get('.yellow');
+  cy.step('select indigo');
+  cy.get('.indigo');
 
+  cy.todo('Finish the test');
 
   const findStepCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-step')
-  }
+    return Cypress.$('#unified-reporter', top?.document).find(
+      '.command-name-step',
+    );
+  };
 
   const findSectionCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-section')
-  }
+    return Cypress.$('#unified-reporter', top?.document).find(
+      '.command-name-section',
+    );
+  };
 
   const findTodoCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-todo')
-  }
+    return Cypress.$('#unified-reporter', top?.document).find(
+      '.command-name-todo',
+    );
+  };
 
   cy.window()
     .then(findStepCommand)
     .should('have.length', 7)
-    .spread(items => {
+    .spread((items) => {
       cy.wrap(items)
         .find('.command-wrapper')
-        .should('have.css', 'background-color', 'rgb(67, 72, 97)')
-    })
+        .should('have.css', 'background-color', 'rgb(67, 72, 97)');
+    });
 
   cy.window()
     .then(findSectionCommand)
     .should('have.length', 2)
-    .spread(items => {
+    .spread((items) => {
       cy.wrap(items)
         .find('.command-wrapper')
-        .should('have.css', 'background-color', 'rgb(0, 89, 93)')
-    })
+        .should('have.css', 'background-color', 'rgb(0, 89, 93)');
+    });
 
   cy.window()
     .then(findTodoCommand)
     .should('have.length', 1)
-    .spread(items => {
+    .spread((items) => {
       cy.wrap(items)
         .find('.command-wrapper')
-        .should('have.css', 'background-color', 'rgb(238, 130, 238)')
-    })
-
+        .should('have.css', 'background-color', 'rgb(238, 130, 238)');
+    });
 });

@@ -1,4 +1,4 @@
-export { }
+export {};
 declare global {
   namespace Cypress {
     interface Chainable {
@@ -8,7 +8,7 @@ declare global {
        * @example
        * cy.step('open home page')
        */
-      step(message: string): Chainable<null>;
+      step(message: string, stepFunction?: () => void): Chainable<null>;
 
       /**
        * Adds a new section to your test flow.
@@ -16,7 +16,7 @@ declare global {
        * @example
        * cy.section('dashboard section')
        */
-      section(message: string): Chainable<null>;
+      section(message: string, sectionFunction?: () => void): Chainable<null>;
 
       /**
        * Adds a warning step to your test flow.
@@ -24,7 +24,7 @@ declare global {
        * @example
        * cy.todo('finish the user setup')
        */
-      todo(message: string): Chainable<null>;
+      todo(message: string, todoFunction?: () => void): Chainable<null>;
     }
   }
   interface Window {
