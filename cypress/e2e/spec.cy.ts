@@ -1,3 +1,5 @@
+import { findInReporter } from '../support/reporter'
+
 it('numbers test steps', () => {
 
   cy.step('open a page')
@@ -22,17 +24,9 @@ it('numbers test steps', () => {
   cy.todo('Finish the test')
 
 
-  const findStepCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-step')
-  }
-
-  const findSectionCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-section')
-  }
-
-  const findTodoCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-todo')
-  }
+  const findStepCommand = () => findInReporter('.command-name-step')
+  const findSectionCommand = () => findInReporter('.command-name-section')
+  const findTodoCommand = () => findInReporter('.command-name-todo')
 
   cy.window()
     .then(findStepCommand)

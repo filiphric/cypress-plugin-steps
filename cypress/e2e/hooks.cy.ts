@@ -1,3 +1,5 @@
+import { findInReporter } from '../support/reporter'
+
 before(() => {
   cy.step('before')
 });
@@ -20,9 +22,10 @@ it('counts properly', () => {
   cy.step('three')
 
   const testStepCommand = () => {
-    expect(Cypress.$("#unified-reporter", top?.document).find('.command-name-step')).to.have.length(2)
-    expect(Cypress.$("#unified-reporter", top?.document).find('.command-name-step')[0]).to.contain.text('1. BEFOREEACH')
-    expect(Cypress.$("#unified-reporter", top?.document).find('.command-name-step')[1]).to.contain.text('2. THREE')
+    const steps = findInReporter('.command-name-step')
+    expect(steps).to.have.length(2)
+    expect(steps[0]).to.contain.text('1. BEFOREEACH')
+    expect(steps[1]).to.contain.text('2. THREE')
   }
 
   cy.window()

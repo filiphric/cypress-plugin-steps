@@ -1,58 +1,82 @@
-export const addStyles = () => {
+const STYLE_ID = 'cypress-plugin-steps-styles'
 
-  // append styles
-  const reporterEl = top?.document.querySelector('#unified-reporter') || top?.document.querySelector('#app')
-  const reporterStyleEl = document.createElement('style')
-  reporterEl?.appendChild(reporterStyleEl)
-  reporterStyleEl.innerHTML = `
-  .command.command-name-step .command-wrapper {
+const styles = `
+  .reporter .command.command-name-step .command-wrapper {
     background-color: #434861;
   }
-  .command.command-name-section .command-wrapper {
+  .reporter .command.command-name-section .command-wrapper {
     background-color: #00595D;
   }
-  .command.command-name-todo .command-wrapper {
+  .reporter .command.command-name-todo .command-wrapper {
     background-color: #ee82ee;
   }
-  .command.command-name-step .command-number-column {
+  .reporter .command.command-name-step .command-number-column {
     color: #d0d2e0;
   }
-  .command.command-name-section .command-number-column {
+  .reporter .command.command-name-section .command-number-column {
     color: #d0d2e0;
   }
-  .command.command-name-todo .command-number-column {
+  .reporter .command.command-name-todo .command-number-column {
     color: #d0d2e0;
   }
-  .command.command-name-todo:hover .command-number-column {
+  .reporter .command.command-name-todo:hover .command-number-column {
     color: #ffffff;
   }
-  .command.command-name-step:hover .command-wrapper {
+  .reporter .command.command-name-step .command-wrapper:hover,
+  .reporter .command.command-name-step .command-wrapper.command-is-interactive:hover {
     background-color: #5A5F7A;
   }
-  .command.command-name-section:hover .command-wrapper {
+  .reporter .command.command-name-section .command-wrapper:hover,
+  .reporter .command.command-name-section .command-wrapper.command-is-interactive:hover {
     background-color: #007780;
   }
-  .command.command-name-todo:hover .command-wrapper {
+  .reporter .command.command-name-todo .command-wrapper:hover,
+  .reporter .command.command-name-todo .command-wrapper.command-is-interactive:hover {
     background-color: #fe92fe;
   }
 
-  .command.command-name-step .command-method,
-  .command.command-name-section .command-method,
-  .command.command-name-todo .command-method
+  .reporter .command.command-name-step .command-method,
+  .reporter .command.command-name-section .command-method,
+  .reporter .command.command-name-todo .command-method
   {
     display: none;
   }
 
-  .command.command-name-step .command-message-text,
-  .command.command-name-section .command-message-text,
-  .command.command-name-todo .command-message-text
+  .reporter .command.command-name-step .command-message-text,
+  .reporter .command.command-name-section .command-message-text,
+  .reporter .command.command-name-todo .command-message-text
   {
     color: #d0d2e0
   }
-  .command.command-name-todo:hover .command-message-text
+  .reporter .command.command-name-todo:hover .command-message-text
   {
     color: #ffffff
   }
-  `;
+`
 
+const injectIntoDocument = (doc: Document) => {
+  if (doc.getElementById(STYLE_ID)) {
+    return
+  }
+
+  const styleEl = doc.createElement('style')
+  styleEl.id = STYLE_ID
+  styleEl.textContent = styles
+  doc.head.appendChild(styleEl)
+}
+
+export const addStyles = () => {
+  const topDoc = top?.document
+  if (!topDoc) {
+    return
+  }
+
+  // Cypress 15.19+ clones head styles into #reporter-frame at mount
+  injectIntoDocument(topDoc)
+
+  const reporterFrame = topDoc.querySelector('#reporter-frame') as HTMLIFrameElement | null
+  const frameDoc = reporterFrame?.contentDocument
+  if (frameDoc) {
+    injectIntoDocument(frameDoc)
+  }
 }
