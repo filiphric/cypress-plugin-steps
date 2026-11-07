@@ -1,3 +1,5 @@
+import { findInReporter } from '../support/reporter'
+
 it('numbers test steps', () => {
 
   cy.step('open a page')
@@ -22,43 +24,19 @@ it('numbers test steps', () => {
   cy.todo('Finish the test')
 
 
-  const findStepCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-step')
-  }
-
-  const findSectionCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-section')
-  }
-
-  const findTodoCommand = () => {
-    return Cypress.$("#unified-reporter", top?.document).find('.command-name-todo')
-  }
-
-  cy.window()
-    .then(findStepCommand)
-    .should('have.length', 7)
-    .spread(items => {
-      cy.wrap(items)
-        .find('.command-wrapper')
-        .should('have.css', 'background-color', 'rgb(67, 72, 97)')
+  cy.window().should(() => {
+    const checks = [
+      ['step', 7, 'rgb(67, 72, 97)'],
+      ['section', 2, 'rgb(0, 89, 93)'],
+      ['todo', 1, 'rgb(238, 130, 238)'],
+    ] as const
+    checks.forEach(([name, count, color]) => {
+      const commands = findInReporter(`.command-name-${name}`)
+      expect(commands, `${name} count`).to.have.length(count)
+      commands.each((_, command) => {
+        expect(Cypress.$(command).find('.command-wrapper'), `${name} background`)
+          .to.have.css('background-color', color)
+      })
     })
-
-  cy.window()
-    .then(findSectionCommand)
-    .should('have.length', 2)
-    .spread(items => {
-      cy.wrap(items)
-        .find('.command-wrapper')
-        .should('have.css', 'background-color', 'rgb(0, 89, 93)')
-    })
-
-  cy.window()
-    .then(findTodoCommand)
-    .should('have.length', 1)
-    .spread(items => {
-      cy.wrap(items)
-        .find('.command-wrapper')
-        .should('have.css', 'background-color', 'rgb(238, 130, 238)')
-    })
-
+  })
 });
